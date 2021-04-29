@@ -9,10 +9,17 @@ class Item():
         self.value = value
 
 
+class Node():
+    def __init__(self):
+        """
+        docstring
+        """
+        pass
+
+
 class b_tree(object):
     def __init__(self):
         self.root = None
-        self.node = None
 
     def __inset_item(self, Item):
         if self.root != None:
