@@ -1,5 +1,8 @@
 
 
+from typing import NoReturn
+
+
 class Item():
     def __init__(self, key, value):
         self.key = key
@@ -13,9 +16,9 @@ class Node():
     # ---- print ----
 
     def _PrintNode(self):
-        for i in self.element_list:
-            print(i)
-
+        # for i in self.element_list:
+        #     print(i)
+        return self.element_list
     # ---- print ----
 
     def _InsertNode(self, item):
@@ -36,15 +39,15 @@ class b_tree():
 
     def _PrintLeftNode(self):
         if self.left_node is None:
-            print("-"*5, "empty", "-"*5)
+            print("-"*5, "left empty", "-"*5)
         else:
-            print("-"*5, self.left_node.__PrintNode(), "-"*5)
+            print("-"*5, self.left_node._PrintNode(), "-"*5)
 
     def _PrintRightNode(self):
         if self.right_node is None:
-            print("-"*5, "empty", "-"*5)
+            print("-"*5, "right empty", "-"*5)
         else:
-            print("-"*5, self.right_node.__PrintNode(), "-"*5)
+            print("-"*5, self.right_node._PrintNode(), "-"*5)
 
     def _PrintTree(self):
         self._PrintRoot()
@@ -54,17 +57,33 @@ class b_tree():
 
     def _InsetRootItem(self, item_key, item_value="temp"):
         if self.root != None:
-            pass
-            # insert node func call
+            if self.root.key > item_key:
+                self.left_node = self._InsertNodeItem(
+                    self.left_node, item_key, item_value)
+            else:
+                self.right_node = self._InsertNodeItem(
+                    self.right_node, item_key, item_value)
         else:
             self.root = Item(item_key, item_value)
 
     def _InsertNodeItem(self, select_node, item_key, item_value):
         if select_node is None:
-            select_node = Node(Item(item_key, item_value))
+            return Node(Item(item_key, item_value))
         else:
             # if select_node.key
             pass
+
+    def _InsertLeftNode(self):
+        """
+        docstring
+        """
+        pass
+
+    def _InsertRightNode(self):
+        """
+        docstring
+        """
+        pass
 
 
 if __name__ == "__main__":
@@ -80,4 +99,7 @@ if __name__ == "__main__":
     # b_tree.__inset_item(i)
     # print(b)
     b._InsetRootItem(l[0])
+    b._InsetRootItem(l[1])
     b._PrintTree()
+
+    print("-"*5, 1, "-"*5)
