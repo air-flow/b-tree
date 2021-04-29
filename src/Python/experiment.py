@@ -10,8 +10,15 @@ class Node():
     def __init__(self, item):
         self.element_list = [item.key]
         self.node_list = [item]
+    # ---- print ----
 
-    def __insert_node(self, item):
+    def _PrintNode(self):
+        for i in self.element_list:
+            print(i)
+
+    # ---- print ----
+
+    def _InsertNode(self, item):
         pass
 
 
@@ -21,14 +28,38 @@ class b_tree():
         self.left_node = None
         self.right_node = None
 
-    def __inset_root_item(self, item_key, item_value="temp"):
+    # ---- print ----
+
+    def _PrintRoot(self):
+        s = "-"*5
+        print(s, self.root.key, s)
+
+    def _PrintLeftNode(self):
+        if self.left_node is None:
+            print("-"*5, "empty", "-"*5)
+        else:
+            print("-"*5, self.left_node.__PrintNode(), "-"*5)
+
+    def _PrintRightNode(self):
+        if self.right_node is None:
+            print("-"*5, "empty", "-"*5)
+        else:
+            print("-"*5, self.right_node.__PrintNode(), "-"*5)
+
+    def _PrintTree(self):
+        self._PrintRoot()
+        self._PrintLeftNode()
+        self._PrintRightNode()
+    # ----------------------
+
+    def _InsetRootItem(self, item_key, item_value="temp"):
         if self.root != None:
             pass
             # insert node func call
         else:
             self.root = Item(item_key, item_value)
 
-    def __insert_node_item(self, select_node, item_key, item_value):
+    def _InsertNodeItem(self, select_node, item_key, item_value):
         if select_node is None:
             select_node = Node(Item(item_key, item_value))
         else:
@@ -48,5 +79,5 @@ if __name__ == "__main__":
     # for i in l:
     # b_tree.__inset_item(i)
     # print(b)
-    b.__inset_root_item(l[0])
-    
+    b._InsetRootItem(l[0])
+    b._PrintTree()
