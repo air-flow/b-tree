@@ -74,9 +74,8 @@ class b_tree():
             pass
 
     def _InsertLeftNode(self):
-        """
-        docstring
-        """
+        if self.left_node is None:
+            pass
         pass
 
     def _InsertRightNode(self):
